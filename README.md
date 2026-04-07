@@ -1,3 +1,51 @@
+# TicketPilot (App)
+
+This repo contains the **TicketPilot application** (auth + inbox + AI pipeline scaffolding).
+
+## Local setup
+
+1) Install deps
+
+```bash
+npm install
+```
+
+2) Configure env
+
+- Copy `.env.example` → `.env.local`
+- Fill:
+  - `NEXT_PUBLIC_SUPABASE_URL`
+  - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+
+3) Create database schema
+
+- In Supabase SQL editor, run `supabase/schema.sql`.
+
+4) Create an organization + membership (MVP)
+
+- Insert a row into `public.organizations`
+- Insert a row into `public.organization_members` for your `auth.users.id`
+
+5) Run dev server
+
+```bash
+npm run dev
+```
+
+Open `http://localhost:3000`.
+
+## What’s implemented so far
+
+- Supabase auth (magic link + password)
+- Protected `/app/*` routes
+- `/app/inbox` lists tickets for your first org membership
+
+## Next steps
+
+- Email ingestion (IMAP first; Gmail OAuth later)
+- Ticket detail view + AI suggestion generation
+- Auto-send low-risk replies + review queue
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
